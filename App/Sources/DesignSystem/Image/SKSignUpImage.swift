@@ -17,12 +17,12 @@ public struct SKImage: View {
     }
 
     public var body: some View {
-        smsImageToImage()
+        skImageToImage()
             .resizable()
             .renderingMode(renderingMode)
     }
 
-    private func smsImageToImage() -> SwiftUI.Image {
+    private func skImageToImage() -> SwiftUI.Image {
         switch image {
         case .SignUpBackground:
             return StackKnowledgeAsset.SignUp.signUpBackground.swiftUIImage
