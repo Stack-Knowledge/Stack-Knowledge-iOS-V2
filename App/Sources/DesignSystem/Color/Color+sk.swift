@@ -6,7 +6,7 @@ public extension Color {
         case gray(Gray)
         case medal(Medal)
     }
-    
+
     static func sk(_ style: SKColorSystem) -> Color {
         switch style {
         case let .main(colorable as SKColorable),
