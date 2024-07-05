@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "banner1.png",
+      "filename" : "SKBanner.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "banner1 1.png",
+      "filename" : "SKBanner 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "banner1 2.png",
+      "filename" : "SKBanner 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
