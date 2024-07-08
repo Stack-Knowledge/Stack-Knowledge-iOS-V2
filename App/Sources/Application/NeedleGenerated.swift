@@ -17,6 +17,28 @@ private func parent1(_ component: NeedleFoundation.Scope) -> NeedleFoundation.Sc
 
 #if !NEEDLE_DYNAMIC
 
+private class StudentMainDependencya9393ba8e6906aa5293fProvider: StudentMainDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->AppComponent->StudentMainComponent
+private func factory3f302b760f5a8a5bb663e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return StudentMainDependencya9393ba8e6906aa5293fProvider()
+}
+private class TeacherMainDependencycb579053e8adab6534c4Provider: TeacherMainDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->AppComponent->TeacherMainComponent
+private func factorydd9b11b5064ca2f8da24e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return TeacherMainDependencycb579053e8adab6534c4Provider()
+}
 private class SampleDependency1b18b455a8384602db39Provider: SampleDependency {
 
 
@@ -27,6 +49,25 @@ private class SampleDependency1b18b455a8384602db39Provider: SampleDependency {
 /// ^->AppComponent->SampleComponent
 private func factoryd2c67a11371931c5d6bfe3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
     return SampleDependency1b18b455a8384602db39Provider()
+}
+private class RootDependency3944cc797a4a88956fb5Provider: RootDependency {
+    var sampleFactory: any SampleFactory {
+        return appComponent.sampleFactory
+    }
+    var teacherMainFactory: any TeacherMainFactory {
+        return appComponent.teacherMainFactory
+    }
+    var studentMainFactory: any StudentMainFactory {
+        return appComponent.studentMainFactory
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
+    }
+}
+/// ^->AppComponent->RootComponent
+private func factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return RootDependency3944cc797a4a88956fb5Provider(appComponent: parent1(component) as! AppComponent)
 }
 
 #else
@@ -60,6 +101,8 @@ extension AppComponent: Registration {
         localTable["markingProblemUseCase-any MarkingProblemUseCase"] = { [unowned self] in self.markingProblemUseCase as Any }
         localTable["repliedSignupUseCase-any RepliedSignupUseCase"] = { [unowned self] in self.repliedSignupUseCase as Any }
         localTable["sampleFactory-any SampleFactory"] = { [unowned self] in self.sampleFactory as Any }
+        localTable["teacherMainFactory-any TeacherMainFactory"] = { [unowned self] in self.teacherMainFactory as Any }
+        localTable["studentMainFactory-any StudentMainFactory"] = { [unowned self] in self.studentMainFactory as Any }
         localTable["remoteMissionDataSource-any RemoteMissionDataSource"] = { [unowned self] in self.remoteMissionDataSource as Any }
         localTable["missionRepository-any MissionRepository"] = { [unowned self] in self.missionRepository as Any }
         localTable["fetchAllMissionUseCase-any FetchAllMissionUseCase"] = { [unowned self] in self.fetchAllMissionUseCase as Any }
@@ -70,9 +113,26 @@ extension AppComponent: Registration {
         localTable["fetchItemListUseCase-any FetchItemListUseCase"] = { [unowned self] in self.fetchItemListUseCase as Any }
     }
 }
+extension StudentMainComponent: Registration {
+    public func registerItems() {
+
+    }
+}
+extension TeacherMainComponent: Registration {
+    public func registerItems() {
+
+    }
+}
 extension SampleComponent: Registration {
     public func registerItems() {
 
+    }
+}
+extension RootComponent: Registration {
+    public func registerItems() {
+        keyPathToName[\RootDependency.sampleFactory] = "sampleFactory-any SampleFactory"
+        keyPathToName[\RootDependency.teacherMainFactory] = "teacherMainFactory-any TeacherMainFactory"
+        keyPathToName[\RootDependency.studentMainFactory] = "studentMainFactory-any StudentMainFactory"
     }
 }
 
@@ -92,7 +152,10 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
 
 @inline(never) private func register1() {
     registerProviderFactory("^->AppComponent", factoryEmptyDependencyProvider)
+    registerProviderFactory("^->AppComponent->StudentMainComponent", factory3f302b760f5a8a5bb663e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->TeacherMainComponent", factorydd9b11b5064ca2f8da24e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SampleComponent", factoryd2c67a11371931c5d6bfe3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
 }
 #endif
 
