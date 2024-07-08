@@ -1,11 +1,7 @@
 import SwiftUI
 
-enum StudentBottomTab {
-    case main, mission, store, rank
-}
-
 struct StudentTabBarView: View {
-    @State var currentTab: StudentBottomTab = .main
+    @State var currentTab: StudentTabFlow = .main
 
     private let studentMainFactory: any StudentMainFactory
     private let studentMissionFactory: any StudentMissionFactory
@@ -33,7 +29,7 @@ struct StudentTabBarView: View {
     var body: some View {
         TabView(selection: $currentTab) {
             AnyView(studentMainFactory.makeView())
-                .tag(StudentBottomTab.main)
+                .tag(StudentTabFlow.main)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.mainPageIcon.swiftUIImage
 
@@ -42,7 +38,7 @@ struct StudentTabBarView: View {
                 }
 
             AnyView(studentMissionFactory.makeView())
-                .tag(StudentBottomTab.mission)
+                .tag(StudentTabFlow.mission)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.missionPageIcon.swiftUIImage
 
@@ -51,7 +47,7 @@ struct StudentTabBarView: View {
                 }
 
             AnyView(studentStoreFactory.makeView())
-                .tag(StudentBottomTab.store)
+                .tag(StudentTabFlow.store)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.storePageIcon.swiftUIImage
 
@@ -60,7 +56,7 @@ struct StudentTabBarView: View {
                 }
 
             AnyView(studentRankFactory.makeView())
-                .tag(StudentBottomTab.rank)
+                .tag(StudentTabFlow.rank)
                 .tabItem {
                     StackKnowledgeAsset.TapBar.rankingPageIcon.swiftUIImage
 
