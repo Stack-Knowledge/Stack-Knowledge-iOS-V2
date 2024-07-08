@@ -1,5 +1,9 @@
 import Foundation
 
-public enum TabFlow: String, RawRepresentable {
-    case 
+public enum TeacherTabFlow: String, RawRepresentable {
+    case main
+    case scoring
+    case making
+    case store
+    case rank
 }
