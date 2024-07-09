@@ -23,7 +23,7 @@ struct RootView: View {
             case .sample:
                 AnyView(sampleFactory.makeView())
                     .environmentObject(sceneState)
-                
+
             case .teacherMain:
                 AnyView(teacherMainFactory.makeView())
                     .environmentObject(sceneState)

@@ -42,7 +42,7 @@ extension TargetType {
         case .imageUpload:
             return [
                 HTTPHeaderFieldKey.contentType.rawValue: HTTPHeaderFieldValue.multipart.rawValue,
-                HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)"
+                HTTPHeaderFieldKey.authorization.rawValue: "Bearer \(HTTPHeaderFieldValue.accessToken.rawValue)",
             ]
         }
     }

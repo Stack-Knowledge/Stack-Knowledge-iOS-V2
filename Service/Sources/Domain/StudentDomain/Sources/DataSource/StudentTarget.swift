@@ -15,7 +15,7 @@ extension StudentTarget: TargetType {
              .fetchMyInfo:
             return .accessToken
 
-        case .profileImageUpload(let image):
+        case let .profileImageUpload(image):
             return .imageUpload
         }
     }

@@ -16,4 +16,5 @@ public final class RootComponent: Component<RootDependency> {
         )
     }
 }
+
 #warning("로그인 페이지 완성 시 sample -> login으로 변경")

@@ -1,6 +1,6 @@
 import SwiftUI
 
-public protocol ClientTabBarFactory {
+public protocol StudentTabBarFactory {
     associatedtype SomeView: View
     func makeView() -> SomeView
 }
