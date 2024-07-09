@@ -4,17 +4,17 @@ struct RootView: View {
     @EnvironmentObject var sceneState: SceneState
 
     private let sampleFactory: any SampleFactory
-    private let teacherMainFactory: any TeacherMainFactory
-    private let studentMainFactory: any StudentMainFactory
+    private let teacherTabBarFactory: any TeacherTabBarFactory
+    private let studentTabBarFactory: any StudentTabBarFactory
 
     public init(
         sampleFactory: any SampleFactory,
-        teacherMainFactory: any TeacherMainFactory,
-        studentMainFactory: any StudentMainFactory
+        teacherTabBarFactory: any TeacherTabBarFactory,
+        studentTabBarFactory: any StudentTabBarFactory
     ) {
         self.sampleFactory = sampleFactory
-        self.teacherMainFactory = teacherMainFactory
-        self.studentMainFactory = studentMainFactory
+        self.teacherTabBarFactory = teacherTabBarFactory
+        self.studentTabBarFactory = studentTabBarFactory
     }
 
     var body: some View {
@@ -25,11 +25,11 @@ struct RootView: View {
                     .environmentObject(sceneState)
 
             case .teacherMain:
-                AnyView(teacherMainFactory.makeView())
+                AnyView(teacherTabBarFactory.makeView())
                     .environmentObject(sceneState)
 
             case .studentMain:
-                AnyView(studentMainFactory.makeView())
+                AnyView(teacherTabBarFactory.makeView())
                     .environmentObject(sceneState)
             }
         }
