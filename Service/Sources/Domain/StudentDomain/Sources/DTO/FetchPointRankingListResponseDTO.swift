@@ -8,8 +8,8 @@ public struct FetchPointRankingListResponseDTO: Decodable {
 extension FetchPointRankingListResponseDTO {
     func toDomain() -> [PointRankingListEntity] {
         [PointRankingListEntity(
-            cumulatePoint: self.cumulatePoint,
-            user: self.user.toDomain()
+            cumulatePoint: cumulatePoint,
+            user: user.toDomain()
         )]
     }
 }
