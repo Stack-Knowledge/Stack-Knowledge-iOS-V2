@@ -1,11 +1,14 @@
 import SwiftUI
+import PopupView
 
 struct StudentMainView: View {
     @StateObject var studentMainContainer: MVIContainer<StudentMainIntent, StudentMainModelStateProtocol>
     
+    @State private var showPopUp = false
+    
     @State private var currentIndex = 0
     let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -36,7 +39,7 @@ struct StudentMainView: View {
                 Text("문제 풀기")
                     .skFont(.ps18)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.top, 32)
+                    .padding(.top, 15)
                     .padding(.leading, 16)
                 
                 VStack {
@@ -63,15 +66,15 @@ struct StudentMainView: View {
                                         .multilineTextAlignment(.center)
                                         .padding(.bottom, 24)
                                 }
+                                .padding(.init(top: 18, leading: 35, bottom: 18, trailing: 35))
                                 .background(Color.white)
-                                .frame(width: 117, height: 158)
                                 .cornerRadius(10)
+                                .frame(height: 158)
                             }
                         }
-                        
                     }
                     .padding(.vertical, 16)
-                    .padding(.horizontal, 15.44)
+                    .padding(.horizontal, 16)
                     .background(Color.SKColorSystem.Gray.lightgray1.color)
                     .cornerRadius(20)
                 }
@@ -83,28 +86,25 @@ struct StudentMainView: View {
                         HStack(spacing: 16) {
                             ForEach(1..<4) { ranking in
                                 ZStack(alignment: .topLeading) {
-                                    VStack {
-                                        Image(.bannerImage3)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
+                                    VStack() {
+                                        AsyncImage(url: URL(string: studentMainContainer.model.profileImageURL))
                                             .frame(width: 60, height: 60)
                                             .clipShape(Circle())
                                             .clipped()
                                         
                                         Text(studentMainContainer.model.profileName)
                                             .skFont(.pm14)
-                                            .lineLimit(nil)
-                                            .fixedSize(horizontal: false, vertical: true)
                                         
                                         Spacer().frame(height: 16)
                                         
                                         Text(studentMainContainer.model.skPoint)
                                             .skFont(.pm16)
                                     }
-                                    .padding(.init(top: 18, leading: 25, bottom: 18, trailing: 25))
+                                    .padding(.init(top: 25, leading: 25, bottom: 25, trailing: 25))
                                     .background(Color.white)
-                                    .frame(height: 158)
                                     .cornerRadius(10)
+                                    .frame(height: 158)
+                                    
                                     
                                     if ranking == 1 {
                                         Circle()
@@ -142,11 +142,36 @@ struct StudentMainView: View {
                     .background(Color.SKColorSystem.Gray.lightgray1.color)
                     .cornerRadius(20)
                 }
-                .padding(.top, 20)
+                .padding(.top, 10)
                 .padding(.horizontal, 16)
                 
+                .logoNavigationBar()
             }
-            .logoNavigationBar()
+            .overlay(
+                Button(action: {
+                    showPopUp = true
+                }) {
+                    Image(systemName: "person.2")
+                        .resizable()
+                        .foregroundColor(.white)
+                        .padding(16)
+                        .background(Circle().fill(Color.SKColorSystem.Main.mainColor.color))
+                        .frame(width: 60, height: 60)
+                }
+                    .padding(.trailing, 30)
+                    .padding(.bottom, 74),
+                alignment: .bottomTrailing
+            )
+            .popup(isPresented: $showPopUp) {
+                SignupListPopupView(studentMainContainer: studentMainContainer, showPopUp: $showPopUp)
+            } customize: {
+                $0
+                    .type(.default)
+                    .position(.center)
+                    .animation(.spring())
+                    .closeOnTapOutside(false)
+                    .closeOnTap(false)
+            }
         }
     }
 }
