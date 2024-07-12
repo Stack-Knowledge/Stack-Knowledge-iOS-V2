@@ -8,6 +8,7 @@ let project = Project.dynamicFramework(
     dependencies: [
         .SPM.Alamofire,
         .SPM.NeedleFoundation,
+        .SPM.PopupView,
     ],
     scripts: [.SwiftLintString]
 )
