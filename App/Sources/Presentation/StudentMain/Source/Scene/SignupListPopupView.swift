@@ -2,14 +2,14 @@ import SwiftUI
 
 struct SignupListPopupView: View {
     @StateObject var studentMainContainer: MVIContainer<StudentMainIntent, StudentMainModelStateProtocol>
-    @Binding var showPopUp: Bool
+    @Binding var showPopup: Bool
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button(action: {
-                    showPopUp = false
+                    showPopup = false
                 }) {
                     Image(systemName: "xmark")
                         .foregroundColor(.black)
