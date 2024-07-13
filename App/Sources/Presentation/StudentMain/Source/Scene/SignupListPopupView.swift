@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SignupListPopupView: View {
     @StateObject var studentMainContainer: MVIContainer<StudentMainIntent, StudentMainModelStateProtocol>
-    
     @Binding var showPopUp: Bool
     
     var body: some View {
@@ -21,7 +20,7 @@ struct SignupListPopupView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 10) {
-                    ForEach(1..<4) { index in
+                    ForEach(1..<4) { _ in
                         VStack {
                             HStack(spacing: 10) {
                                 Spacer()
@@ -35,7 +34,9 @@ struct SignupListPopupView: View {
                                     .skFont(.pm16)
                                 
                                 Button {
+                                
                                     //회원가입 수락 동작 필요.
+                                
                                 } label: {
                                     Text("수락")
                                         .frame(width: 45, height: 21)
@@ -45,7 +46,9 @@ struct SignupListPopupView: View {
                                 }
 
                                 Button {
+                                
                                     //회원가입 거절 동작 필요.
+                                
                                 } label: {
                                     Text("거절")
                                         .frame(width: 45, height: 21)
