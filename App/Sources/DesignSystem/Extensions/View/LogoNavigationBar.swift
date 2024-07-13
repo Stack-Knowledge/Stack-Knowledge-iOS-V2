@@ -25,7 +25,9 @@ struct LogoNavigationBarModifier: ViewModifier {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
+                        
                         // logout 동작 필요.
+                        
                     }) {
                         Image(asset: StackKnowledgeAsset.Logout.logoutIcon)
                             .resizable()
