@@ -13,7 +13,8 @@ struct SignupListPopupView: View {
                 }) {
                     Image(systemName: "xmark")
                         .foregroundColor(.black)
-                        .padding()
+                        .padding(.top, 18)
+                        .padding(.trailing, 18)
                 }
             }
             .frame(height: 50)
@@ -70,6 +71,6 @@ struct SignupListPopupView: View {
         .background(Color.white)
         .cornerRadius(20)
         .shadow(radius: 10)
-        .padding()
+        .padding(.top, 25)
     }
 }
