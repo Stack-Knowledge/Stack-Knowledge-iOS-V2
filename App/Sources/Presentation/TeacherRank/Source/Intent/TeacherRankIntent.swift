@@ -1,9 +1,28 @@
-//
-//  TeacherRankIntent.swift
-//  StackKnowledge
-//
-//  Created by 정윤서 on 7/15/24.
-//  Copyright © 2024 team.filo. All rights reserved.
-//
-
 import Foundation
+
+import Service
+
+final class TeacherRankIntent: TeacherRankIntentProtocol {
+    private weak var model: TeacherRankModelActionsProtocol?
+    private let fetchPointRankingListUseCase: any FetchPointRankingListUseCase
+
+    init(
+        model: TeacherRankModelActionsProtocol,
+        fetchPointRankingListUseCase: any FetchPointRankingListUseCase
+    ) {
+        self.model = model
+        self.fetchPointRankingListUseCase = fetchPointRankingListUseCase
+    }
+
+    func onAppear() {
+        Task {
+            do {
+                let rankingList = try await fetchPointRankingListUseCase()
+                
+                model?.updateRankingList(rankingList: rankingList)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+}
