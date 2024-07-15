@@ -6,23 +6,29 @@ struct TeacherRankView: View {
     var state: any TeacherRankModelStateProtocol { container.model }
 
     var body: some View {
-        VStack(spacing: 0) {
-            LazyVStack(spacing: 12) {
-                ForEach(state.rankingList.indices, id: \.self) { index in
-                    let rankingList = state.rankingList[safe: index]
-
-                    if let ranking = rankingList {
-                        RankingListRow(
-                            ranking: index.description,
-                            profileImage: ranking.user.profileImage,
-                            name: ranking.user.userName,
-                            point: ranking.cumulatePoint
-                        )
+        NavigationView {
+            VStack(spacing: 0) {
+                LazyVStack(spacing: 12) {
+                    ForEach(state.rankingList.indices, id: \.self) { index in
+                        let rankingList = state.rankingList[safe: index]
+                        
+                        if let ranking = rankingList {
+                            RankingListRow(
+                                ranking: "\(index + 1)",
+                                profileImage: ranking.user.profileImage,
+                                name: ranking.user.userName,
+                                point: ranking.cumulatePoint
+                            )
+                            .padding(.horizontal, 8)
+                        }
+                        
+                        Divider()
                     }
                 }
             }
+            .navigationTitle("랭킹")
+            .padding(.horizontal, 16)
         }
-        .navigationTitle("랭킹")
         .onAppear {
             intent.onAppear()
         }

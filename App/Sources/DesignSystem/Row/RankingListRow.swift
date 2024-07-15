@@ -18,7 +18,8 @@ public struct RankingListRow: View {
                     ProgressView()
                 }
                 .frame(width: 50, height: 50)
-                .cornerRadius(100)
+                .scaledToFit()
+                .clipShape(Circle())
 
                 Text(name)
                     .skFont(.pm14)
