@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct MainMissionScrollView: View {
-    var tester: String
-    var subtitle: String
-    var price: String
+    let tester: String
+    let subtitle: String
+    let price: String
     
     var body: some View {
         VStack {
@@ -30,13 +30,13 @@ struct MainMissionScrollView: View {
                                 .multilineTextAlignment(.center)
                                 .padding(.bottom, 24)
                         }
-                        .padding(.init(top: 18, leading: 35, bottom: 18, trailing: 35))
+                        .padding(.init(top: 18, leading: 40, bottom: 18, trailing: 40))
                         .background(Color.white)
                         .cornerRadius(10)
-                        .frame(height: 158)
                     }
                 }
             }
+            .frame(height: 160)
             .padding(.vertical, 16)
             .padding(.horizontal, 16)
             .background(Color.SKColorSystem.Gray.lightgray1.color)
