@@ -20,6 +20,7 @@ public struct RankingListRow: View {
                 .frame(width: 50, height: 50)
                 .scaledToFit()
                 .clipShape(Circle())
+                .frame(width: 110, height: 110)
 
                 Text(name)
                     .skFont(.pm14)
