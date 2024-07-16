@@ -2,7 +2,7 @@ import SwiftUI
 
 public struct RankingListRow: View {
     let ranking: String
-    let profileImage: String
+    let profileURL: String?
     let name: String
     let point: Int
 
@@ -12,15 +12,21 @@ public struct RankingListRow: View {
                 Text(ranking)
                     .skFont(.pm20)
 
-                AsyncImage(url: URL(string: profileImage)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
+                if let profileURL = profileURL {
+                    AsyncImage(url: URL(string: profileURL)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(width: 50, height: 50)
+                } else {
+                    SKBaseProfileImage(.BaseProfileImage)
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .frame(width: 50, height: 50)
                 }
-                .frame(width: 50, height: 50)
-                .scaledToFit()
-                .clipShape(Circle())
-                .frame(width: 110, height: 110)
 
                 Text(name)
                     .skFont(.pm14)
