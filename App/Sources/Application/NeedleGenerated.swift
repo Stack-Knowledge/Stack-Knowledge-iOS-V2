@@ -98,15 +98,17 @@ private func factorye8446c8e511ead4ea62de3b0c44298fc1c149afb(_ component: Needle
     return StudentMissionDependencyf378aa3a3ee2a7235988Provider()
 }
 private class TeacherRankDependency2b0e4fc3a1e9d17dd002Provider: TeacherRankDependency {
-
-
-    init() {
-
+    var fetchPointRankingListUseCase: any FetchPointRankingListUseCase {
+        return appComponent.fetchPointRankingListUseCase
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->TeacherRankComponent
-private func factory98823a0d7e84219cc5a7e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return TeacherRankDependency2b0e4fc3a1e9d17dd002Provider()
+private func factory98823a0d7e84219cc5a7f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return TeacherRankDependency2b0e4fc3a1e9d17dd002Provider(appComponent: parent1(component) as! AppComponent)
 }
 private class TeacherMainDependencycb579053e8adab6534c4Provider: TeacherMainDependency {
 
@@ -282,7 +284,7 @@ extension StudentMissionComponent: Registration {
 }
 extension TeacherRankComponent: Registration {
     public func registerItems() {
-
+        keyPathToName[\TeacherRankDependency.fetchPointRankingListUseCase] = "fetchPointRankingListUseCase-any FetchPointRankingListUseCase"
     }
 }
 extension TeacherMainComponent: Registration {
@@ -343,7 +345,7 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
     registerProviderFactory("^->AppComponent->TeacherStoreComponent", factory128c5d3f23ae759e8449e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->StudentStoreComponent", factory91eb5426241c30205ae0e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->StudentMissionComponent", factorye8446c8e511ead4ea62de3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->TeacherRankComponent", factory98823a0d7e84219cc5a7e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->TeacherRankComponent", factory98823a0d7e84219cc5a7f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->TeacherMainComponent", factorydd9b11b5064ca2f8da24e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->TeacherMakingComponent", factory4e9f04eeaaa95e801d04e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->SampleComponent", factoryd2c67a11371931c5d6bfe3b0c44298fc1c149afb)
