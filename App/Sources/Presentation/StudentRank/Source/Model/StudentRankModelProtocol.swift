@@ -1,9 +1,13 @@
-//
-//  StudentRankModelProtocol.swift
-//  StackKnowledge
-//
-//  Created by 정윤서 on 7/16/24.
-//  Copyright © 2024 team.filo. All rights reserved.
-//
-
 import Foundation
+
+import Service
+
+protocol StudentRankModelStateProtocol {
+    var myInfo: MyInfoEntity? { get }
+    var rankingList: [PointRankingListEntity] { get }
+}
+
+protocol StudentRankModelActionsProtocol: AnyObject {
+    func updateMyInfo(info: MyInfoEntity)
+    func updateRankingList(list: [PointRankingListEntity])
+}
