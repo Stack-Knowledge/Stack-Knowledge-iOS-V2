@@ -1,6 +1,8 @@
 import Foundation
+import Service
 
 protocol StudentMainModelStateProtocol {
+    var rankingDataList: [PointRankingListEntity] { get }
     var tester: String { get }
     var subtitle: String { get }
     var price: String { get }

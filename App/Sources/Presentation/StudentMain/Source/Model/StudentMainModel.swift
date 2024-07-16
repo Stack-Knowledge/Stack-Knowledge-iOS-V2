@@ -1,6 +1,8 @@
 import Foundation
+import Service
 
 final class StudentMainModel: ObservableObject, StudentMainModelStateProtocol {
+    @Published var rankingDataList: [PointRankingListEntity] = []
     @Published var tester: String = ""
     @Published var subtitle: String = ""
     @Published var price: String = ""
