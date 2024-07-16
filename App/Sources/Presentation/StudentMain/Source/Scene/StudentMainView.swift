@@ -32,36 +32,13 @@ struct StudentMainView: View {
                 
                 MainRankingScrollView(profileImageUrl: studentMainContainer.model.profileImageUrl,
                                       profileName: studentMainContainer.model.profileName,
-                                      skPoint: studentMainContainer.model.skPoint
+                                      skPoint: studentMainContainer.model.skPoint,
+                                      rankingDataList: studentMainContainer.model.rankingDataList
                 )
                 .padding(.top, 10)
                 .padding(.horizontal, 16)
             }
             .logoNavigationBar()
-            .overlay(alignment: .bottomTrailing) {
-                Button {
-                    showPopup = true
-                } label: {
-                    Image(systemName: "person.2")
-                        .resizable()
-                        .foregroundColor(.white)
-                        .padding(16)
-                        .background(Circle().fill(Color.SKColorSystem.Main.mainColor.color))
-                        .frame(width: 60, height: 60)
-                        .padding(.trailing, 30)
-                        .padding(.bottom, 74)
-                }
-            }
-            .popup(isPresented: $showPopup) {
-                SignupListPopupView(studentMainContainer: studentMainContainer, showPopup: $showPopup)
-            } customize: {
-                $0
-                    .type(.default)
-                    .position(.center)
-                    .animation(.spring())
-                    .closeOnTapOutside(false)
-                    .closeOnTap(false)
-            }
         }
     }
 }
