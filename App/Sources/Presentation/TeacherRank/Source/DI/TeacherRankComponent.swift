@@ -13,7 +13,7 @@ public final class TeacherRankComponent: Component<TeacherRankDependency>, Teach
         let intent = TeacherRankIntent(model: model, fetchPointRankingListUseCase: dependency.fetchPointRankingListUseCase)
 
         let container = MVIContainer(
-            intent: intent,
+            intent: intent as TeacherRankIntentProtocol,
             model: model as TeacherRankModelStateProtocol,
             modelChangePublisher: model.objectWillChange
         )

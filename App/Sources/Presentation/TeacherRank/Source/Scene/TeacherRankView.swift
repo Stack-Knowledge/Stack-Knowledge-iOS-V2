@@ -1,27 +1,25 @@
 import SwiftUI
 
 struct TeacherRankView: View {
-    @StateObject var container: MVIContainer<TeacherRankIntent, TeacherRankModelStateProtocol>
+    @StateObject var container: MVIContainer<TeacherRankIntentProtocol, TeacherRankModelStateProtocol>
     var intent: any TeacherRankIntentProtocol { container.intent }
     var state: any TeacherRankModelStateProtocol { container.model }
 
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                LazyVStack(spacing: 12) {
+            ScrollView {
+                LazyVStack(spacing: 4) {
                     ForEach(state.rankingList.indices, id: \.self) { index in
                         let rankingList = state.rankingList[safe: index]
                         
-                        if let ranking = rankingList {
-                            RankingListRow(
-                                ranking: "\(index + 1)",
-                                profileImage: ranking.user.profileImage,
-                                name: ranking.user.userName,
-                                point: ranking.cumulatePoint
-                            )
-                            .padding(.horizontal, 8)
-                        }
-                        
+                        RankingListRow(
+                            ranking: "\(index + 1)",
+                            profileURL: rankingList?.user.profileImage,
+                            name: rankingList?.user.userName ?? "",
+                            point: rankingList?.cumulatePoint ?? 0
+                        )
+                        .padding(.horizontal, 8)
+
                         Divider()
                     }
                 }

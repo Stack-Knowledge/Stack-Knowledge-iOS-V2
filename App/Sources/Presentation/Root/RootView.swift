@@ -29,7 +29,7 @@ struct RootView: View {
                     .environmentObject(sceneState)
 
             case .studentMain:
-                AnyView(teacherTabBarFactory.makeView())
+                AnyView(studentTabBarFactory.makeView())
                     .environmentObject(sceneState)
             }
         }

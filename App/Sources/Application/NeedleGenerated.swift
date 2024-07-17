@@ -18,15 +18,20 @@ private func parent1(_ component: NeedleFoundation.Scope) -> NeedleFoundation.Sc
 #if !NEEDLE_DYNAMIC
 
 private class StudentRankDependencye04f973d7ee2e4dbf097Provider: StudentRankDependency {
-
-
-    init() {
-
+    var fetchMyInfoUseCase: any FetchMyInfoUseCase {
+        return appComponent.fetchMyInfoUseCase
+    }
+    var fetchPointRankingListUseCase: any FetchPointRankingListUseCase {
+        return appComponent.fetchPointRankingListUseCase
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->StudentRankComponent
-private func factorya207e95657dad45fc3d1e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return StudentRankDependencye04f973d7ee2e4dbf097Provider()
+private func factorya207e95657dad45fc3d1f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return StudentRankDependencye04f973d7ee2e4dbf097Provider(appComponent: parent1(component) as! AppComponent)
 }
 private class StudentMainDependencya9393ba8e6906aa5293fProvider: StudentMainDependency {
 
@@ -250,7 +255,8 @@ extension AppComponent: Registration {
 }
 extension StudentRankComponent: Registration {
     public func registerItems() {
-
+        keyPathToName[\StudentRankDependency.fetchMyInfoUseCase] = "fetchMyInfoUseCase-any FetchMyInfoUseCase"
+        keyPathToName[\StudentRankDependency.fetchPointRankingListUseCase] = "fetchPointRankingListUseCase-any FetchPointRankingListUseCase"
     }
 }
 extension StudentMainComponent: Registration {
@@ -339,7 +345,7 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
 
 @inline(never) private func register1() {
     registerProviderFactory("^->AppComponent", factoryEmptyDependencyProvider)
-    registerProviderFactory("^->AppComponent->StudentRankComponent", factorya207e95657dad45fc3d1e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->StudentRankComponent", factorya207e95657dad45fc3d1f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->StudentMainComponent", factory3f302b760f5a8a5bb663e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->TeacherTabBarComponent", factoryc4bcf0b736b2cf3bd721f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->TeacherStoreComponent", factory128c5d3f23ae759e8449e3b0c44298fc1c149afb)

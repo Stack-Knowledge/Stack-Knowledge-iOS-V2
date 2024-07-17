@@ -7,5 +7,5 @@ protocol TeacherRankModelStateProtocol {
 }
 
 protocol TeacherRankModelActionsProtocol: AnyObject {
-    func updateRankingList(rankingList: [PointRankingListEntity])
+    func updateRankingList(list: [PointRankingListEntity])
 }

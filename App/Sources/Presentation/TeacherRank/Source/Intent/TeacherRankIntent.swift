@@ -19,7 +19,7 @@ final class TeacherRankIntent: TeacherRankIntentProtocol {
             do {
                 let rankingList = try await fetchPointRankingListUseCase()
                 
-                model?.updateRankingList(rankingList: rankingList)
+                model?.updateRankingList(list: rankingList)
             } catch {
                 print(error.localizedDescription)
             }
