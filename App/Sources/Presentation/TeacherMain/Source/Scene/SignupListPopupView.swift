@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct SignupListPopupView: View {
-    @StateObject var studentMainContainer: MVIContainer<StudentMainIntent, StudentMainModelStateProtocol>
     @Binding var showPopup: Bool
     
     var body: some View {
@@ -26,12 +25,12 @@ struct SignupListPopupView: View {
                             HStack(spacing: 10) {
                                 Spacer()
                                     
-                                Text(studentMainContainer.model.listName)
+                                Text("") // TeacherMain페이지 model 완성 후 그에 맞는 데이터 삽입 필요
                                     .skFont(.pm16)
                                 
                                 Text("-")
                                 
-                                Text(studentMainContainer.model.listRequestDate)
+                                Text("") // TeacherMain페이지 model 완성 후 그에 맞는 데이터 삽입 필요
                                     .skFont(.pm16)
                                 
                                 Button {
