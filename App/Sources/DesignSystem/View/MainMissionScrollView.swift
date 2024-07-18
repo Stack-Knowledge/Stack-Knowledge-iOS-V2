@@ -2,10 +2,6 @@ import Service
 import SwiftUI
 
 struct MainMissionScrollView: View {
-    let tester: String
-    let subtitle: String
-    let price: String
-    
     let missionDataList: [MissionListEntity]
     
     var body: some View {
