@@ -1,0 +1,75 @@
+import SwiftUI
+
+struct SignupListPopupView: View {
+    @Binding var showPopup: Bool
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button(action: {
+                    showPopup = false
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(.black)
+                        .padding(.top, 18)
+                        .padding(.trailing, 18)
+                }
+            }
+            .frame(height: 50)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 10) {
+                    ForEach(1..<4) { _ in
+                        VStack {
+                            HStack(spacing: 10) {
+                                Spacer()
+                                    
+                                Text("") // TeacherMain페이지 model 완성 후 그에 맞는 데이터 삽입 필요
+                                    .skFont(.pm16)
+                                
+                                Text("-")
+                                
+                                Text("") // TeacherMain페이지 model 완성 후 그에 맞는 데이터 삽입 필요
+                                    .skFont(.pm16)
+                                
+                                Button {
+                                
+                                    //회원가입 수락 동작 필요.
+                                
+                                } label: {
+                                    Text("수락")
+                                        .frame(width: 45, height: 21)
+                                        .background(Color.SKColorSystem.Main.mainColor.color)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(2)
+                                }
+
+                                Button {
+                                
+                                    //회원가입 거절 동작 필요.
+                                
+                                } label: {
+                                    Text("거절")
+                                        .frame(width: 45, height: 21)
+                                        .background(Color.SKColorSystem.Main.mainColor.color)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(2)
+                                }
+                            }
+                        }
+                        .frame(width: 270, height: 50)
+                    }
+                }
+            }
+            .frame(width: 270, height: 245)
+            
+            Spacer()
+        }
+        .frame(width: 328, height: 345)
+        .background(Color.white)
+        .cornerRadius(20)
+        .shadow(radius: 10)
+        .padding(.top, 25)
+    }
+}

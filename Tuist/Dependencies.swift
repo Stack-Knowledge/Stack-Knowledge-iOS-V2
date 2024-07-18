@@ -12,6 +12,9 @@ let dependencies = Dependencies(
                 url: "https://github.com/Alamofire/Alamofire.git",
                 requirement: .upToNextMajor(from: "5.8.1")
             ),
+            .remote(url: "https://github.com/exyte/PopupView.git",
+                    requirement: .upToNextMajor(from: "3.0.4")
+            )
         ],
         baseSettings: .settings(
             configurations: [

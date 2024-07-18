@@ -19,19 +19,19 @@ public struct SKBannerImage: View {
     }
 
     public var body: some View {
-        smsImageToImage()
+        skImageToImage()
             .resizable()
             .renderingMode(renderingMode)
     }
 
-    private func smsImageToImage() -> SwiftUI.Image {
+    private func skImageToImage() -> SwiftUI.Image {
         switch image {
         case .Banner1:
             return StackKnowledgeAsset.Banner.bannerImage1.swiftUIImage
         case .Banner2:
-            return StackKnowledgeAsset.Banner.bannerImage1.swiftUIImage
+            return StackKnowledgeAsset.Banner.bannerImage2.swiftUIImage
         case .Banner3:
-            return StackKnowledgeAsset.Banner.bannerImage1.swiftUIImage
+            return StackKnowledgeAsset.Banner.bannerImage3.swiftUIImage
         }
     }
 }
