@@ -2,10 +2,6 @@ import Service
 import SwiftUI
 
 struct MainRankingScrollView: View {
-    let profileImageUrl: String
-    let profileName: String
-    let skPoint: String
-    
     let rankingDataList: [PointRankingListEntity]
     
     var body: some View {
