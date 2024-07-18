@@ -25,7 +25,8 @@ struct StudentMainView: View {
                 
                 MainMissionScrollView(tester: studentMainContainer.model.tester,
                                       subtitle: studentMainContainer.model.subtitle,
-                                      price: studentMainContainer.model.price
+                                      price: studentMainContainer.model.price,
+                                      missionDataList: studentMainContainer.model.missionDataList
                 )
                 .padding(.top, 8)
                 .padding(.horizontal, 16)
