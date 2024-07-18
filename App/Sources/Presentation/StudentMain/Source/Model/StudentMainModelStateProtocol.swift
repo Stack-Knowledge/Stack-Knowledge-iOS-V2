@@ -2,6 +2,7 @@ import Foundation
 import Service
 
 protocol StudentMainModelStateProtocol {
+    var missionDataList: [MissionListEntity] { get }
     var rankingDataList: [PointRankingListEntity] { get }
     var tester: String { get }
     var subtitle: String { get }
