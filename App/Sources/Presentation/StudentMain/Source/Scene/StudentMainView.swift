@@ -23,19 +23,11 @@ struct StudentMainView: View {
                     .padding(.top, 15)
                     .padding(.leading, 16)
                 
-                MainMissionScrollView(tester: studentMainContainer.model.tester,
-                                      subtitle: studentMainContainer.model.subtitle,
-                                      price: studentMainContainer.model.price,
-                                      missionDataList: studentMainContainer.model.missionDataList
-                )
+                MainMissionScrollView(missionDataList: studentMainContainer.model.missionDataList)
                 .padding(.top, 8)
                 .padding(.horizontal, 16)
                 
-                MainRankingScrollView(profileImageUrl: studentMainContainer.model.profileImageUrl,
-                                      profileName: studentMainContainer.model.profileName,
-                                      skPoint: studentMainContainer.model.skPoint,
-                                      rankingDataList: studentMainContainer.model.rankingDataList
-                )
+                MainRankingScrollView(rankingDataList: studentMainContainer.model.rankingDataList)
                 .padding(.top, 10)
                 .padding(.horizontal, 16)
             }
